@@ -3,9 +3,11 @@
 Use Bootstrap to present a nicely standardized view for your models.
 
 [![Gem Version](https://badge.fury.io/rb/standard_view.svg)](https://badge.fury.io/rb/standard_view)
+[![Build Status](https://semaphoreci.com/api/v1/freshly/standard_view/branches/develop/badge.svg)](https://semaphoreci.com/freshly/standard_view)
+[![Maintainability](https://api.codeclimate.com/v1/badges/beccb908a058d1c51245/maintainability)](https://codeclimate.com/github/Freshly/standard_view/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/beccb908a058d1c51245/test_coverage)](https://codeclimate.com/github/Freshly/standard_view/test_coverage)
 
-
-* [Material](#material)
+* [StandardView](#standardview)
   * [Installation](#installation)
   * [Usage](#usage)
   * [Development](#development)
