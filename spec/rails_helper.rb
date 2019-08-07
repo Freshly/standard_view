@@ -6,8 +6,7 @@ require "rails"
 require "spicerack/spec_helper"
 
 SimpleCov.start do
-  load_profile "rails"
-  add_filter "lib/generators/"
+  add_filter "/spec/"
 end
 
 ENV["RAILS_ENV"] ||= "test"
@@ -17,6 +16,8 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require "rspec/rails"
+
+require "standard_view"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
