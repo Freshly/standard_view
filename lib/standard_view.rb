@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "standard_view/engine"
 
 module StandardView
