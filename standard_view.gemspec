@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.add_dependency "rails", "~> 5.2.3"
-  spec.add_dependency "material", ">= 0.2.0", "< 1.0"
+  spec.add_dependency "material", ">= 0.2.1", "< 1.0"
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov", "~> 0.16"
   spec.add_development_dependency "faker", "~> 1.8"
 
-  spec.add_development_dependency "rspice", ">= 0.13.3", "< 1.0"
-  spec.add_development_dependency "spicerack-styleguide", ">= 0.13.3", "< 1.0"
+  spec.add_development_dependency "rspice", ">= 0.15.1", "< 1.0"
+  spec.add_development_dependency "spicerack-styleguide", ">= 0.15.1", "< 1.0"
 end
