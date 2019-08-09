@@ -19,7 +19,12 @@ require "rspec/rails"
 
 require "standard_view"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+require "support/test_classes/user"
+require "support/test_classes/order"
+require "support/test_classes/user_material"
+require "support/test_classes/order_material"
+
+require "support/shared_context/with_example_materials"
 
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
