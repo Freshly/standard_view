@@ -1,0 +1,8 @@
+<div class="dropdown">
+  <%= link_to "#", class: "nav-link dropdown-toggle", id: "masthead-settings-menu", data: { toggle: "dropdown" } do %>
+    <%= icon_for :masthead_nav_menu %>
+  <% end %>
+  <nav class="dropdown-menu dropdown-menu-right" aria-labelledby="masthead-settings-menu">
+    <%= render "masthead_nav_menu_items" %>
+  </nav>
+</div>

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= "#{content_for(:title)} | " if content_for?(:title) %><%= t("title") %></title>
+  <title>
+    <%= "#{content_for(:title)} #{t("site.title_separator")} " if content_for?(:title) %><%= t("site.title") %>
+  </title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= render "stylesheets" %>
   <%= render "javascripts" %>
 </head>
 <body>
-  <%# cache do %>
-    <%#= render "masthead" %>
-  <%# end %>
-
+  <%#= render "masthead" %>
   <%#= render "flash_messages" %>
-
   <%= yield %>
 </body>
 </html>
