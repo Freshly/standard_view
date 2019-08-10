@@ -1,5 +1,8 @@
 en:
-  site:
+  application:
     title: Example Title
-    title_separator: "|"
+    separator: "|"
     brand: Example Brand
+  icons:
+    masthead_nav_menu:
+      name: user

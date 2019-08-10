@@ -7,11 +7,5 @@ module StandardView
     config.to_prepare do
       ApplicationController.helper(StandardView::ApplicationHelper)
     end
-
-    # initializer 'local_helper.action_controller' do
-    #   ActiveSupport.on_load :action_controller do
-    #     helper StandardView::ApplicationHelper
-    #   end
-    # end
   end
 end

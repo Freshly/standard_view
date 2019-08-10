@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>
-    <%= "#{content_for(:title)} #{t("site.title_separator")} " if content_for?(:title) %><%= t("site.title") %>
+    <%= "#{content_for(:title)} #{t("application.separator")} " if content_for?(:title) %><%= t("application.title") %>
   </title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
