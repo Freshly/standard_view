@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= "#{content_for(:title)} | " if content_for?(:title) %><%= t("title") %></title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= render "stylesheets" %>
+  <%= render "javascripts" %>
+</head>
+<body>
+  <%# cache do %>
+    <%#= render "masthead" %>
+  <%# end %>
+
+  <%#= render "flash_messages" %>
+
+  <%= yield %>
+</body>
+</html>
