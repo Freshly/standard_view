@@ -4,8 +4,8 @@
   <title><%= "#{content_for(:title)} | " if content_for?(:title) %><%= t("title") %></title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= render "standard_view/stylesheets" %>
-  <%= render "standard_view/javascripts" %>
+  <%= render "standard_view/site/stylesheets" %>
+  <%= render "standard_view/site/javascripts" %>
 </head>
 <body>
   <%# cache do %>
