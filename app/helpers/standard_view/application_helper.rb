@@ -13,7 +13,7 @@ module StandardView
     def icon_for(reference, spin: false)
       definition = reference.icon if reference.respond_to?(:icon)
       definition ||= reference.to_h if reference.respond_to?(:to_h)
-      definition ||= I18n.t("icons.#{reference}")
+      definition ||= I18n.t("icons.#{reference}", default: nil)
       definition ||= reference
 
       definition = { name: definition } if definition.present? && !definition.respond_to?(:fetch)
