@@ -2,21 +2,24 @@
 
 module StandardView
   module ApplicationHelper
-    def icon_for(key, spin: false)
-      definition = if key.respond_to?(:icon)
-        key.icon
-      else
-        localization_key = "icons.#{key}"
-        I18n.t(localization_key)  if I18n.exists?(localization_key)
-      end
+    def action
+      ActiveSupport::StringInquirer.new action_name
+    end
 
-      if definition.respond_to?(:fetch)
-        name = definition.fetch(:name, )
-        style = definition.fetch(:style, "s")
-      else
-        name = definition
-      end
+    def active_for(*arguments)
+      "active" if current_page?(*arguments)
+    end
 
+    def icon_for(reference, spin: false)
+      definition = reference.icon if reference.respond_to?(:icon)
+      definition ||= reference.to_h if reference.respond_to?(:to_h)
+      definition ||= I18n.t("icons.#{reference}")
+      definition ||= { name: reference } if reference.present? && !reference.respond_to?(:fetch)
+
+      icon_tag(definition[:name], definition[:style], spin: spin)
+    end
+
+    def icon_tag(name = null, style = null, spin: false)
       content_tag(:i, "", class: "fa#{style || "s"} fa-#{name || "question"} #{"fa-spin" if spin}")
     end
   end
