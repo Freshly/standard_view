@@ -1,0 +1,8 @@
+en:
+  application:
+    title: Example Title
+    separator: "|"
+    brand: Example Brand
+  icons:
+    masthead_nav_menu:
+      name: user

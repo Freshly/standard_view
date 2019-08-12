@@ -1,0 +1,21 @@
+<header class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container">
+    <%= render "masthead_brand" %>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#masthead-nav"
+      aria-controls="masthead-nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <section class="collapse navbar-collapse" id="masthead-nav">
+      <%= render "masthead_nav" %>
+    </section>
+  </div>
+</header>
