@@ -14,7 +14,9 @@ module StandardView
       definition = reference.icon if reference.respond_to?(:icon)
       definition ||= reference.to_h if reference.respond_to?(:to_h)
       definition ||= I18n.t("icons.#{reference}")
-      definition ||= { name: reference } if reference.present? && !reference.respond_to?(:fetch)
+      definition ||= reference
+
+      definition = { name: definition } if definition.present? && !definition.respond_to?(:fetch)
 
       icon_tag(definition[:name], definition[:style], spin: spin)
     end
