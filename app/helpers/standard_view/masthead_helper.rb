@@ -2,12 +2,17 @@
 
 module StandardView
   module MastheadHelper
-    def masthead_nav_link_for_material(material)
-      masthead_nav_link material.index_path, material.index_title, active_for(material.index_path)
+    def masthead_nav_link_for_model(model_class)
+      masthead_nav_link model_class,
+                        title_for_model(model_class),
+                        active_for(controller: model_class.name.pluralize.underscore)
     end
 
-    def masthead_menu_link_for_material(material)
-      masthead_menu_link material.index_path, material, material.index_title, active_for(material.index_path)
+    def masthead_menu_link_for_model(model_class)
+      masthead_menu_link model_class,
+                         model_class.model_name.singular.to_sym,
+                         title_for_model(model_class),
+                         active_for(controller: model_class.name.pluralize.underscore)
     end
 
     def masthead_nav_link(destination, text, class_name = nil)
