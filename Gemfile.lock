@@ -5,6 +5,7 @@ PATH
       facet (>= 0.16.2, < 1.0)
       material (>= 0.2.6, < 1.0)
       rails (~> 5.2.3)
+      will_paginate (~> 3.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -209,6 +210,7 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    will_paginate (3.1.8)
 
 PLATFORMS
   ruby

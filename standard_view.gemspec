@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", "~> 5.2.3"
   spec.add_dependency "material", ">= 0.2.6", "< 1.0"
   spec.add_dependency "facet", ">= 0.16.2", "< 1.0"
+  spec.add_dependency "will_paginate", "~> 3.1.1"
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "rake", "~> 10.0"
