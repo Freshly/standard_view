@@ -26,6 +26,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails", "~> 3.8.2"
   spec.add_development_dependency "simplecov", "~> 0.16"
   spec.add_development_dependency "faker", "~> 1.8"
+  spec.add_development_dependency "sqlite3", "~> 1.3.6"
 
   spec.add_development_dependency "rspice", ">= 0.15.1", "< 1.0"
   spec.add_development_dependency "spicerack-styleguide", ">= 0.15.1", "< 1.0"

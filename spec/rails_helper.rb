@@ -26,6 +26,8 @@ require "support/test_classes/order_material"
 
 require "support/shared_context/with_example_materials"
 
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
 
