@@ -1,10 +1,9 @@
 <% list = Material::List.for(facet.record_class) %>
 <% content_for(:title) { list.title } %>
 <% cache facet do %>
-  <h1><%= Time.now %></h1>
   <%= content_tag :main, id: "#{list.parameterized_title}-index", class: "container" do %>
     <header>
-      <%#= render "breadcrumbs", model: parent, label: title_for_collection(collection) if has_parent %>
+      <%= render "breadcrumbs", material: list %>
 
       <%# if action_name == "index" %>
         <%# if controller.action_methods.include?("new") && (!controller.respond_to?(:new?) || controller.new?) %>
