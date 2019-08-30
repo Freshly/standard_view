@@ -1,0 +1,9 @@
+<% if content_for?(:navigation_aside) %>
+  TODO: Navigation Aside
+<!--  <div class="row">-->
+<!--    <aside class="col-lg-3 mb-3"><%#= render "navigation/aside" %></aside>-->
+<!--    <div class="col-lg-9"><%#= content_for(:page_content) %></div>-->
+<!--  </div>-->
+<% else %>
+  <%= content_for(:page_content) %>
+<% end %>
