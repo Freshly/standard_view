@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     standard_view (0.1.1)
-      bootstrap-will_paginate (~> 1.0)
       facet (>= 0.16.2, < 1.0)
       material (>= 0.2.8, < 1.0)
       rails (~> 5.2.3)
+      will_paginate (~> 3.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -55,8 +55,6 @@ GEM
     around_the_world (0.16.2)
       activesupport (~> 5.2.1)
     ast (2.4.0)
-    bootstrap-will_paginate (1.0.0)
-      will_paginate
     builder (3.2.3)
     collectible (0.16.2)
       activesupport (~> 5.2.1)
