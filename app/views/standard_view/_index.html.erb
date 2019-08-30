@@ -3,7 +3,7 @@
 <% cache facet do %>
   <%= content_tag :main, id: "#{list.parameterized_title}-index", class: "container" do %>
     <header>
-      <%= render "breadcrumbs", material: list %>
+      <%= render "standard_view/breadcrumbs", material: list %>
 
       <%# if action_name == "index" %>
         <%# if controller.action_methods.include?("new") && (!controller.respond_to?(:new?) || controller.new?) %>
