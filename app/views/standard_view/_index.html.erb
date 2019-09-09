@@ -2,9 +2,10 @@
 
 <%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
 <% content_for(:title) { list.title } %>
+
 <% cache facet do %>
-  <%# Within the cache block, add the facet data to the list for rendering %>
-  <% list.concat(facet.output) %>
+  <%# Within the cache block, mount the facet for rendering %>
+  <% list.mount_facet(facet) %>
 
   <%= content_tag :main, id: "#{list.parameterized_title}-index", class: "container" do %>
     <header>
