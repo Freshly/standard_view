@@ -3,7 +3,7 @@
 module Material
   class Base
     def to_partial_path
-      "application/_list_item"
+      "application/list_item"
     end
   end
 end

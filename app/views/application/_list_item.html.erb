@@ -1,0 +1,6 @@
+<% source_partial_path = material.source.try(:to_partial_path) %>
+<% if source_partial_path.present? && lookup_context.template_exists?(source_partial_path) %>
+  A custom template exists!
+<% else %>
+  Render the default template!
+<% end %>
