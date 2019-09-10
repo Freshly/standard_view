@@ -1,10 +1,13 @@
+<% render_default_partial = true %>
 <% source_partial_path = list_item.source.try(:to_partial_path) %>
+<% if source_partial_path.present? %>
+  <% prefix, path = source_partial_path.split("/") %>
+  <% if lookup_context.template_exists?(path, prefix, true) %>
+    <% render_default_partial = false %>
+    <%= render partial: source_partial_path, locals: { path.to_sym => list_item } %>
+  <% end %>
+<% end %>
 
-<p><%= source_partial_path %></p>
-<%= lookup_context.template_exists?(source_partial_path) %>
-
-<% if source_partial_path.present? && lookup_context.template_exists?(source_partial_path) %>
-  A custom template exists!
-<% else %>
+<% if render_default_partial %>
   Render the default template!
 <% end %>
