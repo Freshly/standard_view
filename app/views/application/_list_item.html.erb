@@ -8,6 +8,4 @@
   <% end %>
 <% end %>
 
-<% if render_default_partial %>
-  Render the default template!
-<% end %>
+<%= render "standard_view/list_item", material: list_item if render_default_partial %>
