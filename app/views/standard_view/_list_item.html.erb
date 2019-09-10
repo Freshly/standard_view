@@ -2,6 +2,7 @@
 <% class_name = "list-group-item list-group-item-action" %>
 
 <% content_for(:standard_list_item, flush: true) do %>
+  <%= render "icon", material: material %>
   <%= material.list_title %>
 <% end %>
 
