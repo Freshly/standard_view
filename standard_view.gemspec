@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rspice", ">= 0.16.2", "< 1.0"
   spec.add_development_dependency "spicerack-styleguide", ">= 0.16.2", "< 1.0"
+  spec.add_development_dependency "rspec-html-matchers"
 end

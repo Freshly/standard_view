@@ -141,6 +141,9 @@ GEM
     rspec-expectations (3.8.4)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
+    rspec-html-matchers (0.9.1)
+      nokogiri (~> 1)
+      rspec (>= 3.0.0.a, < 4)
     rspec-mocks (3.8.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.8.0)
@@ -224,6 +227,7 @@ DEPENDENCIES
   bundler (~> 2.0.1)
   faker (~> 1.8)
   rake (~> 10.0)
+  rspec-html-matchers
   rspec-rails (~> 3.8.2)
   rspice (>= 0.16.2, < 1.0)
   simplecov (~> 0.16)
