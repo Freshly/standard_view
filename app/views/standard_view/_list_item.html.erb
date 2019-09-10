@@ -1,11 +1,14 @@
-<%# list_item_style_class = presenter.list_item_style? ? " list-group-item-#{presenter.list_item_style}" : "" %>
-<% class_name = "list-group-item list-group-item-action" %>
-
 <% content_for(:standard_list_item, flush: true) do %>
   <%= render "icon", material: material %>
-  <%= material.list_title %>
+
+  <% if material.list_title_truncated? %>
+    <%= content_tag :span, material.list_title, title: material.list_title_value, class: "px-2" %>
+  <% else %>
+    <%= content_tag :span, material.list_title, class: "px-2" %>
+  <% end %>
 <% end %>
 
+<% class_name = "list-group-item list-group-item-action" %>
 <% if material.path? %>
   <%= link_to content_for(:standard_list_item), material, class: class_name %>
 <% else %>
