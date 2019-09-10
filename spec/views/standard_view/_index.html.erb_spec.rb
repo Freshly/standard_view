@@ -3,15 +3,18 @@
 require "rails_helper"
 
 RSpec.describe "standard_view/_index.html.erb", type: :view do
+  helper(StandardView::ApplicationHelper)
+
   subject(:render_partial) { render partial: "standard_view/index", locals: { facet: facet } }
 
-  let(:facet_class) { Class.new(Facet::Base) }
+  let(:facet_class) { TestFacet }
   let(:list_class) { Class.new(Material::List) }
-  let(:record_class) { Class.new }
+  let(:record_class) { Test }
   let(:facet) { facet_class.new }
   let(:list) { list_class.new }
   let(:list_title) { Faker::Lorem.sentence }
   let(:parameterized_title) { list_title.parameterize }
+  let(:collection) { double }
 
   let(:list_parent?) { false }
   let(:facet_filtered?) { false }
@@ -20,7 +23,8 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
   before do
     list_class.__send__(:ensures_item_class, record_class)
 
-    allow(facet).to receive(:record_class).and_return(record_class)
+    allow(record_class).to receive(:all).and_return(collection)
+    allow(collection).to receive(:paginate).and_return([])
     allow(Material::List).to receive(:for).with(record_class).and_return(list)
     allow(list).to receive(:mount_facet)
 
@@ -41,7 +45,7 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
 
   shared_examples_for "an index page is rendered" do
     it "mounts the facet" do
-      expect(list).to have_received(:mount_facet).with(facet)
+      expect(list).to have_received(:mount_facet).with(an_instance_of(facet_class))
     end
 
     it "sets content_for title" do
@@ -59,6 +63,12 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
     it "renders page_content" do
       expect(rendered).to include "_page_content"
     end
+  end
+
+  context "with no specified facet" do
+    subject(:render_partial) { render partial: "standard_view/index" }
+
+    it_behaves_like "an index page is rendered"
   end
 
   context "when list.parent?" do

@@ -26,6 +26,8 @@ require "support/test_classes/user"
 require "support/test_classes/order"
 require "support/test_classes/user_material"
 require "support/test_classes/order_material"
+require "support/test_classes/test_facet"
+require "support/test_classes/test"
 
 require "support/shared_context/with_example_materials"
 

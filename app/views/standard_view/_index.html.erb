@@ -1,3 +1,8 @@
+<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
+<% if local_assigns[:facet].nil? %>
+  <% facet = "#{controller_name.singularize.camelize}Facet".constantize.new(current_page: current_page) %>
+<% end %>
+
 <% list = Material::List.for(facet.record_class) %>
 
 <%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
