@@ -1,0 +1,12 @@
+<%# list_item_style_class = presenter.list_item_style? ? " list-group-item-#{presenter.list_item_style}" : "" %>
+<% class_name = "list-group-item list-group-item-action" %>
+
+<% content_for(:standard_list_item, flush: true) do %>
+  <%= material.list_title %>
+<% end %>
+
+<% if material.path? %>
+  <%= link_to content_for(:standard_list_item), material, class: class_name %>
+<% else %>
+  <%= content_tag :span, content_for(:standard_list_item), class: class_name %>
+<% end %>
