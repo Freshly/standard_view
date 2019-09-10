@@ -21,6 +21,22 @@ RSpec.describe StandardView::ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#current_page" do
+    subject { helper.current_page }
+
+    context "without page params" do
+      it { is_expected.to be_nil }
+    end
+
+    context "with page param" do
+      let(:page) { rand(1..2) }
+
+      before { allow(helper).to receive(:params).and_return({ page: page }) }
+
+      it { is_expected.to eq page }
+    end
+  end
+
   describe "#active_for" do
     subject { helper.active_for(options) }
 

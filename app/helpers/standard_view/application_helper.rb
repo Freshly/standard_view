@@ -25,6 +25,10 @@ module StandardView
       icon_tag(definition[:name], definition[:style], spin: spin)
     end
 
+    def current_page
+      params[:page]
+    end
+
     def icon_tag(name = nil, style = nil, spin: false)
       content_tag(:i, "", class: "fa#{style || "s"} fa-#{name || "question"} #{"fa-spin" if spin}")
     end
