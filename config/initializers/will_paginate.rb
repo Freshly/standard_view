@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/initializers/will_paginate.rb
 #
 # This extension code was written by Isaac Bowen, originally found
