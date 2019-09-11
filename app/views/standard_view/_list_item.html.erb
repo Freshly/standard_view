@@ -24,6 +24,6 @@
 
 <% if material.badge? %>
   <% badge_options = { right: true } %>
-  <% badge_options[:type] = badge.badge_style if material.badge_style? %>
+  <% badge_options[:type] = material.badge_style if material.badge_style? %>
   <%= badge material.badge, **badge_options %>
 <% end %>
