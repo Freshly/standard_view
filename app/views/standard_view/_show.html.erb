@@ -8,7 +8,7 @@
 <% content_for(:title) { material.title } %>
 
 <% cache material do %>
-  <%= content_tag :main, id: "#{list.parameterized_title}-show", class: "container" do %>
+  <%= content_tag :main, id: "#{material.parameterized_title}-show", class: "container" do %>
     <header>
       <%= render "standard_view/breadcrumbs", material: material %>
 
