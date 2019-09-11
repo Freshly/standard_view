@@ -15,3 +15,15 @@
 <% else %>
   <%= content_tag :span, content_for(:standard_list_item), class: class_name %>
 <% end %>
+
+<% if material.label? %>
+  <% label_options = { pill: true } %>
+  <% label_options[:type] = material.label_style if material.label_style? %>
+  <%= badge material.label, **label_options %>
+<% end %>
+
+<% if material.badge? %>
+  <% badge_options = { right: true } %>
+  <% badge_options[:type] = badge.badge_style if material.badge_style? %>
+  <%= badge material.badge, **badge_options %>
+<% end %>
