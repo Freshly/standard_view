@@ -6,6 +6,18 @@
   <% else %>
     <%= content_tag :span, material.list_title, class: "px-2" %>
   <% end %>
+
+  <% if material.label? %>
+    <% label_options = { pill: true } %>
+    <% label_options[:type] = material.label_style if material.label_style? %>
+    <%= badge material.label, **label_options %>
+  <% end %>
+
+  <% if material.badge? %>
+    <% badge_options = { right: true } %>
+    <% badge_options[:type] = material.badge_style if material.badge_style? %>
+    <%= badge material.badge, **badge_options %>
+  <% end %>
 <% end %>
 
 <% list_item_style_class = material.list_item_style? ? " list-group-item-#{material.list_item_style}" : "" %>
@@ -14,16 +26,4 @@
   <%= link_to content_for(:standard_list_item), material, class: class_name %>
 <% else %>
   <%= content_tag :span, content_for(:standard_list_item), class: class_name %>
-<% end %>
-
-<% if material.label? %>
-  <% label_options = { pill: true } %>
-  <% label_options[:type] = material.label_style if material.label_style? %>
-  <%= badge material.label, **label_options %>
-<% end %>
-
-<% if material.badge? %>
-  <% badge_options = { right: true } %>
-  <% badge_options[:type] = material.badge_style if material.badge_style? %>
-  <%= badge material.badge, **badge_options %>
 <% end %>
