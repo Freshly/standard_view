@@ -8,6 +8,7 @@ module StandardView
       ApplicationController.helper(StandardView::ApplicationHelper)
       ApplicationController.helper(StandardView::FormattingHelper)
       ApplicationController.helper(StandardView::MastheadHelper)
+      ApplicationController.helper(StandardView::BadgeHelper)
     end
   end
 end

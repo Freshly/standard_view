@@ -1,0 +1,5 @@
+<% if material.icon_title? %>
+  <%= content_tag(:span, icon_for(material), title: material.icon_title) %>
+<% else %>
+  <%= icon_for material %>
+<% end %>
