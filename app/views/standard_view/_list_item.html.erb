@@ -8,7 +8,8 @@
   <% end %>
 <% end %>
 
-<% class_name = "list-group-item list-group-item-action" %>
+<% list_item_style_class = material.list_item_style? ? " list-group-item-#{material.list_item_style}" : "" %>
+<% class_name = "list-group-item list-group-item-action#{list_item_style_class}" %>
 <% if material.path? %>
   <%= link_to content_for(:standard_list_item), material, class: class_name %>
 <% else %>
