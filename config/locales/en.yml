@@ -3,6 +3,7 @@ en:
     title: Example Title
     separator: "|"
     brand: Example Brand
+    attributes_card:
+      title: Attributes
   icons:
-    masthead_nav_menu:
-      name: user
+    masthead_nav_menu: user
