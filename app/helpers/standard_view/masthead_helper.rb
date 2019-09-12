@@ -9,10 +9,8 @@ module StandardView
     end
 
     def masthead_menu_link_for_model(model_class)
-      masthead_menu_link model_class,
-                         model_class.model_name.singular.to_sym,
-                         title_for_model(model_class),
-                         active_for(controller: model_class.name.pluralize.underscore)
+      list = Material::List.for(model_class)
+      masthead_menu_link list, list.icon, list.list_title, active_for(controller: list.index_path)
     end
 
     def masthead_nav_link(destination, text, class_name = nil)
