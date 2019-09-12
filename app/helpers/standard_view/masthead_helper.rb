@@ -3,9 +3,8 @@
 module StandardView
   module MastheadHelper
     def masthead_nav_link_for_model(model_class)
-      masthead_nav_link model_class,
-                        title_for_model(model_class),
-                        active_for(controller: model_class.name.pluralize.underscore)
+      list = Material::List.for(model_class)
+      masthead_nav_link list.item_class, list.list_title, active_for(public_send(list.index_path))
     end
 
     def masthead_menu_link_for_model(model_class)
