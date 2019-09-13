@@ -25,7 +25,7 @@
 
       <%= content_for(:header_content) if content_for?(:header_content) %>
 
-      <%= render "navigation/tabs" if content_for?(:navigation_tabs) %>
+      <%= render "standard_view/navigation_tabs" if content_for?(:navigation_tabs) %>
     </header>
 
     <%= content_tag(:hr) unless content_for?(:navigation_tabs) %>
