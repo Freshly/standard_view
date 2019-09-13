@@ -5,7 +5,7 @@ module StandardView
     def nav_item_overview_for_material(material)
       active_link_class = active_for(controller: material.route_key, action: :show)
       content_tag(:li, class: "nav-item") do
-        link_to(t("common.overview"), record, class: "nav-link #{active_link_class}")
+        link_to(t("common.overview"), material, class: "nav-link #{active_link_class}")
       end
     end
 
