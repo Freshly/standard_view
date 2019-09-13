@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe "standard_view/_page_content.html.erb", type: :view do
+RSpec.describe "standard_view/_navigation_tabs.html.erb", type: :view do
   it "needs specs"
 end
