@@ -8,6 +8,12 @@
 <% content_for(:title) { material.title } %>
 
 <% cache material do %>
+  <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+    <% content_for(:navigation_tabs) { render "navigation_tabs", material: material } %>
+  <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+    <% content_for(:navigation_aside) { render "navigation_aside", material: material } %>
+  <% end %>
+
   <%= content_tag :main, id: "#{material.parameterized_title}-show", class: "container" do %>
     <header>
       <%= render "standard_view/breadcrumbs", material: material %>
@@ -19,10 +25,10 @@
 
       <%= content_for(:header_content) if content_for?(:header_content) %>
 
-      <%#= render "navigation/tabs" if content_for?(:navigation_tabs) %>
+      <%= render "standard_view/navigation_tabs" if content_for?(:navigation_tabs) %>
     </header>
 
-    <%#= content_tag(:hr) unless content_for?(:navigation_tabs) %>
+    <%= content_tag(:hr) unless content_for?(:navigation_tabs) %>
 
     <% unless content_for?(:page_content) %>
       <% content_for(:page_content) do %>
