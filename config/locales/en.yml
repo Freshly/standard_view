@@ -1,4 +1,6 @@
 en:
+  common:
+    overview: Overview
   application:
     title: Example Title
     separator: "|"
