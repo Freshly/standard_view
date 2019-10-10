@@ -21,10 +21,12 @@
 <% content_for(:title) { list.title } %>
 
 <% cache facet do %>
-  <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
-    <% content_for(:navigation_tabs) { render "navigation_tabs", material: material } %>
-  <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
-    <% content_for(:navigation_aside) { render "navigation_aside", material: material } %>
+  <% if is_nested %>
+    <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+      <% content_for(:navigation_tabs) { render "navigation_tabs", material: material } %>
+    <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+      <% content_for(:navigation_aside) { render "navigation_aside", material: material } %>
+    <% end %>
   <% end %>
 
   <%# Within the cache block, mount the facet for rendering %>
