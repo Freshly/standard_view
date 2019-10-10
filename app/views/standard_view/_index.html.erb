@@ -12,6 +12,7 @@
 
 <% if local_assigns[:list].nil? %>
   <% list = Material::List.for(facet.record_class) %>
+  <% list.define_parent { facet_source } if local_assigns[:nested] %>
 <% end %>
 
 <%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
