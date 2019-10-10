@@ -5,7 +5,7 @@
 <% end %>
 
 <% if local_assigns[:facet].nil? %>
-  <% facet_name = local_assigns[:nested] ? controller_name : action_name %>
+  <% facet_name = local_assigns[:nested] ? action_name : controller_name %>
   <% facet_class = local_assigns[:facet_class].presence || "#{facet_name.singularize.camelize}Facet".constantize %>
   <% facet = facet_class.new(current_page: current_page, source: facet_source) %>
 <% end %>
