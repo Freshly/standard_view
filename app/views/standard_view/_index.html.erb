@@ -1,7 +1,13 @@
-<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
+<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start, assuming conventions. %>
+<% facet_source = local_assigns[:facet_source] %>
+<% if local_assigns[:nested] && facet_source.nil? %>
+  <% facet_source = controller_name.singularize.constantize.find(params[:id]) %>
+<% end %>
+
 <% if local_assigns[:facet].nil? %>
-  <% facet_class = local_assigns[:facet_class].presence || "#{controller_name.singularize.camelize}Facet".constantize %>
-  <% facet = facet_class.new(current_page: current_page, source: local_assigns[:facet_source]) %>
+  <% facet_name = local_assigns[:nested] ? controller_name : action_name %>
+  <% facet_class = local_assigns[:facet_class].presence || "#{facet_name.singularize.camelize}Facet".constantize %>
+  <% facet = facet_class.new(current_page: current_page, source: facet_source) %>
 <% end %>
 
 <% if local_assigns[:list].nil? %>
