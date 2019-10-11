@@ -21,19 +21,16 @@
 <% content_for(:title) { list.title } %>
 
 <% cache facet do %>
-  <%= list.parent? %>
-  <%= list.parent %>
-
-  <%# if is_nested %>
-    <%# if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
-      <%# content_for(:navigation_tabs) { render "navigation_tabs", material: parent_material } %>
-    <%# elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
-      <%# content_for(:navigation_aside) { render "navigation_aside", material: parent_material } %>
-    <%# end %>
-  <%# end %>
-
   <%# Within the cache block, mount the facet for rendering %>
   <% list.mount_facet(facet) %>
+
+  <% if list.parent? %>
+    <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+      <% content_for(:navigation_tabs) { render "navigation_tabs", material: list.parent } %>
+    <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+      <% content_for(:navigation_aside) { render "navigation_aside", material: list.parent } %>
+    <% end %>
+  <% end %>
 
   <%= content_tag :main, id: "#{list.parameterized_title}-index", class: "container" do %>
     <header>
