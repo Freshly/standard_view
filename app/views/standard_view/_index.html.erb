@@ -21,14 +21,13 @@
 <% content_for(:title) { list.title } %>
 
 <% cache facet do %>
-  <%= is_nested %>
+  <% parent_material = list.parent? ? Material::Base.for(list.parent) : nil %>
+
   <% if is_nested %>
-    <% source_material = Material::Base.for(facet_source) %>
-    <%= source_material %>
     <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
-      <% content_for(:navigation_tabs) { render "navigation_tabs", material: source_material } %>
+      <% content_for(:navigation_tabs) { render "navigation_tabs", material: parent_material } %>
     <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
-      <% content_for(:navigation_aside) { render "navigation_aside", material: source_material } %>
+      <% content_for(:navigation_aside) { render "navigation_aside", material: parent_material } %>
     <% end %>
   <% end %>
 
@@ -45,7 +44,7 @@
         <%# end %>
       <%# end %>
 
-      <%#= content_tag(:h5, class: "text-muted") { heading_for_model(parent) } if has_parent %>
+      <%= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>
 
       <h1 class="mb-3"><%= list.title %></h1>
 
