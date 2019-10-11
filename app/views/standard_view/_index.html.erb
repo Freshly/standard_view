@@ -22,16 +22,15 @@
 
 <% cache facet do %>
   <%= list.parent? %>
-  <% parent_material = list.parent? ? Material::Base.for(list.parent) : nil %>
-  <%= parent_material %>
+  <%= list.parent %>
 
-  <% if is_nested %>
-    <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
-      <% content_for(:navigation_tabs) { render "navigation_tabs", material: parent_material } %>
-    <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
-      <% content_for(:navigation_aside) { render "navigation_aside", material: parent_material } %>
-    <% end %>
-  <% end %>
+  <%# if is_nested %>
+    <%# if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+      <%# content_for(:navigation_tabs) { render "navigation_tabs", material: parent_material } %>
+    <%# elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+      <%# content_for(:navigation_aside) { render "navigation_aside", material: parent_material } %>
+    <%# end %>
+  <%# end %>
 
   <%# Within the cache block, mount the facet for rendering %>
   <% list.mount_facet(facet) %>
