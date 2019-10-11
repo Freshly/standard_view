@@ -21,11 +21,14 @@
 <% content_for(:title) { list.title } %>
 
 <% cache facet do %>
+  <%= is_nested %>
   <% if is_nested %>
+    <% source_material = Material::Base.for(facet_source) %>
+    <%= source_material %>
     <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
-      <% content_for(:navigation_tabs) { render "navigation_tabs", material: material } %>
+      <% content_for(:navigation_tabs) { render "navigation_tabs", material: source_material } %>
     <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
-      <% content_for(:navigation_aside) { render "navigation_aside", material: material } %>
+      <% content_for(:navigation_aside) { render "navigation_aside", material: source_material } %>
     <% end %>
   <% end %>
 
