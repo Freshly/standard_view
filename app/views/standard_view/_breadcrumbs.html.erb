@@ -10,7 +10,7 @@
         <% end %>
       </li>
       <li class="breadcrumb-item"><%= link_to parent.breadcrumb_title, parent %></li>
-      <li class="breadcrumb-item"><%= link_to title_for_model(material), [ parent, material.route_key ] %></li>
+      <li class="breadcrumb-item"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
     <% else %>
       <li class="breadcrumb-item">IS ORPHAN</li>
     <% end %>
