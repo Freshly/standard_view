@@ -1,9 +1,21 @@
-<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
-<% if local_assigns[:facet].nil? %>
-  <% facet = "#{controller_name.singularize.camelize}Facet".constantize.new(current_page: current_page) %>
+<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start, assuming conventions. %>
+<% is_nested = local_assigns[:nested] %>
+
+<% facet_source = local_assigns[:facet_source] %>
+<% if is_nested && facet_source.nil? %>
+  <% facet_source = controller_name.singularize.camelize.constantize.find(params[:id]) %>
 <% end %>
 
-<% list = Material::List.for(facet.record_class) %>
+<% if local_assigns[:facet].nil? %>
+  <% facet_name = is_nested ? action_name : controller_name %>
+  <% facet_class = local_assigns[:facet_class].presence || "#{facet_name.singularize.camelize}Facet".constantize %>
+  <% facet = facet_class.new(current_page: current_page, source: facet_source) %>
+<% end %>
+
+<% if local_assigns[:list].nil? %>
+  <% list = Material::List.for(facet.record_class) %>
+  <% list.contextualize(facet_source) if is_nested %>
+<% end %>
 
 <%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
 <% content_for(:title) { list.title } %>
@@ -11,6 +23,14 @@
 <% cache facet do %>
   <%# Within the cache block, mount the facet for rendering %>
   <% list.mount_facet(facet) %>
+
+  <% if list.parent? %>
+    <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+      <% content_for(:navigation_tabs) { render "navigation_tabs", material: list.parent } %>
+    <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+      <% content_for(:navigation_aside) { render "navigation_aside", material: list.parent } %>
+    <% end %>
+  <% end %>
 
   <%= content_tag :main, id: "#{list.parameterized_title}-index", class: "container" do %>
     <header>
@@ -22,14 +42,14 @@
         <%# end %>
       <%# end %>
 
-      <%#= content_tag(:h5, class: "text-muted") { heading_for_model(parent) } if has_parent %>
+      <%= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>
 
       <h1 class="mb-3"><%= list.title %></h1>
 
-      <%#= render "navigation/tabs" if content_for?(:navigation_tabs) %>
+      <%= render "standard_view/navigation_tabs" if content_for?(:navigation_tabs) %>
     </header>
 
-    <%#= content_tag(:hr) unless content_for?(:navigation_tabs) %>
+    <%= content_tag(:hr) unless content_for?(:navigation_tabs) %>
 
     <% unless content_for?(:page_content) %>
       <% content_for(:page_content) do %>
