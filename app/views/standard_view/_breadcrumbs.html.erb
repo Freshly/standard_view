@@ -1,7 +1,16 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <% if material.parent? %>
-      <li class="breadcrumb-item">HAS PARENT</li>
+      <% parent = material.parent %>
+      <li class="breadcrumb-item">
+        <% if parent.index_path? %>
+          <%= link_to title_for_model(parent), parent.index_path %>
+        <% else %>
+          &hellip;
+        <% end %>
+      </li>
+      <li class="breadcrumb-item"><%= link_to parent.breadcrumb_title, parent %></li>
+      <li class="breadcrumb-item"><%= link_to title_for_model(material), [ parent, material.route_key ] %></li>
     <% else %>
       <li class="breadcrumb-item">IS ORPHAN</li>
     <% end %>
