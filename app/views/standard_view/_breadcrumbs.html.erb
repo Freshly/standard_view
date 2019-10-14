@@ -17,7 +17,34 @@
         <li class="breadcrumb-item"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
       <% end %>
     <% else %>
-      <li class="breadcrumb-item">IS ORPHAN</li>
+      <li class="breadcrumb-item">
+        <% if material.index_path? %>
+          <%= link_to title_for_model(material), material.route_key %>
+        <% else %>
+          &hellip;
+        <% end %>
+      </li>
+    <% end %>
+
+    <% if current_page?(controller: material.route_key, action: :show) %>
+      <li class="breadcrumb-item active" aria-current="page"><%= material.breadcrumb_title %></li>
+    <% else %>
+      <% if material.persisted? %>
+        <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material %></li>
+      <% end %>
+      <li class="breadcrumb-item active" aria-current="page">
+        <% if local_assigns[:label].present? %>
+          <%= local_assigns[:label] %>
+        <% elsif I18n.exists?("breadcrumbs.#{controller_name}.#{action_name}") %>
+          <%= t("breadcrumbs.#{controller_name}.#{action_name}") %>
+        <% elsif I18n.exists?("breadcrumbs.actions.#{action_name}") %>
+          <%= t("breadcrumbs.actions.#{action_name}") %>
+        <% elsif I18n.exists?("breadcrumbs.controllers.#{controller_name}") %>
+          <%= t("breadcrumbs.controllers.#{controller_name}") %>
+        <% else %>
+          <%= action_name.humanize %>
+        <% end %>
+      </li>
     <% end %>
   </ol>
 </nav>
