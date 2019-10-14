@@ -30,7 +30,7 @@
       <li class="breadcrumb-item active" aria-current="page"><%= material.breadcrumb_title %></li>
     <% else %>
       <% if material.path? %>
-        <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material %></li>
+        <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material.singular_route_key %></li>
       <% end %>
       <li class="breadcrumb-item active" aria-current="page">
         <% if local_assigns[:label].present? %>
