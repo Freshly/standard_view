@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 5.2.3"
   spec.add_dependency "material", ">= 0.2.21", "< 1.0"
-  spec.add_dependency "facet", ">= 0.16.2", "< 1.0"
+  spec.add_dependency "facet", ">= 0.17.1", "< 1.0"
   spec.add_dependency "will_paginate", "~> 3.1.1"
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "faker", "~> 1.8"
   spec.add_development_dependency "sqlite3", "~> 1.3.6"
 
-  spec.add_development_dependency "rspice", ">= 0.16.2", "< 1.0"
-  spec.add_development_dependency "spicerack-styleguide", ">= 0.16.2", "< 1.0"
+  spec.add_development_dependency "rspice", ">= 0.17.1", "< 1.0"
+  spec.add_development_dependency "spicerack-styleguide", ">= 0.17.1", "< 1.0"
   spec.add_development_dependency "rspec-html-matchers"
 end

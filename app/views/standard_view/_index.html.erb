@@ -42,7 +42,7 @@
         <%# end %>
       <%# end %>
 
-      <%#= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>
+      <%= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>
 
       <h1 class="mb-3"><%= list.title %></h1>
 
