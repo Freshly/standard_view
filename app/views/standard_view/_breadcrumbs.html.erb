@@ -4,7 +4,7 @@
       <% parent = material.parent %>
       <li class="breadcrumb-item">
         <% if parent.index_path? %>
-          <%= link_to title_for_model(parent), parent.index_path %>
+          <%= link_to title_for_model(parent), parent.route_key %>
         <% else %>
           &hellip;
         <% end %>
