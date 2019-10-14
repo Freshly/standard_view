@@ -11,9 +11,7 @@
       </li>
       <li class="breadcrumb-item"><%= link_to parent.breadcrumb_title, parent %></li>
 
-      <% if current_page?(controller: parent.route_key, action: material.route_key) %>
-        <li class="breadcrumb-item active" aria-current="page"><%= title_for_model(material) %>
-      <% else %>
+      <% unless current_page?(controller: parent.route_key, action: material.route_key) %>
         <li class="breadcrumb-item"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
       <% end %>
     <% else %>
