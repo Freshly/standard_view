@@ -2,20 +2,20 @@
   <ol class="breadcrumb">
     <% if material.parent? %>
       <% parent = material.parent %>
-      <li class="breadcrumb-item e">
+      <li class="breadcrumb-item">
         <% if parent.index_path? %>
           <%= link_to title_for_model(parent), parent.route_key %>
         <% else %>
           &hellip;
         <% end %>
       </li>
-      <li class="breadcrumb-item d"><%= link_to parent.breadcrumb_title, parent %></li>
+      <li class="breadcrumb-item"><%= link_to parent.breadcrumb_title, parent %></li>
 
       <% unless current_page?(controller: parent.route_key, action: material.route_key) %>
-        <li class="breadcrumb-item c"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
+        <li class="breadcrumb-item"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
       <% end %>
     <% else %>
-      <li class="breadcrumb-item b">
+      <li class="breadcrumb-item">
         <% if material.index_path? %>
           <%= link_to title_for_model(material), material.route_key %>
         <% else %>
@@ -25,10 +25,10 @@
     <% end %>
 
     <% if current_page?(controller: material.route_key, action: :show) %>
-      <li class="breadcrumb-item active f" aria-current="page"><%= material.breadcrumb_title %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= material.breadcrumb_title %></li>
     <% else %>
-      <% if material.path? %>
-        <li class="breadcrumb-item a"><%= link_to material.breadcrumb_title, material.singular_route_key %></li>
+      <% if current_page?(controller: material.route_key) %>
+        <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material %></li>
       <% end %>
       <li class="breadcrumb-item active" aria-current="page">
         <% if local_assigns[:label].present? %>
