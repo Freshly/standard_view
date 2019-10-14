@@ -4,6 +4,7 @@ require "rails_helper"
 
 RSpec.describe "standard_view/_index.html.erb", type: :view do
   helper(StandardView::ApplicationHelper)
+  helper(StandardView::FormattingHelper)
 
   subject(:render_partial) { render partial: "standard_view/index", locals: { facet: facet } }
 
@@ -16,7 +17,8 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
   let(:parameterized_title) { list_title.parameterize }
   let(:collection) { double }
 
-  let(:list_parent?) { false }
+  let(:list_parent?) { list_parent.present? }
+  let(:list_parent) { nil }
   let(:facet_filtered?) { false }
   let(:page_content) { nil }
 
@@ -31,6 +33,7 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
     allow(list).to receive(:title).and_return(list_title)
     allow(list).to receive(:parameterized_title).and_return(parameterized_title)
     allow(list).to receive(:parent?).and_return(list_parent?)
+    allow(list).to receive(:parent).and_return(list_parent)
 
     allow(facet).to receive(:filtered?).and_return(facet_filtered?)
 
@@ -72,7 +75,8 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
   end
 
   context "when list.parent?" do
-    let(:list_parent?) { true }
+    let(:list_parent) { double(model_name: double(human: parent_human_name)) }
+    let(:parent_human_name) { Faker::Lorem.sentence }
 
     it_behaves_like "an index page is rendered"
 
