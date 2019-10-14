@@ -29,7 +29,7 @@
     <% if current_page?(controller: material.route_key, action: :show) %>
       <li class="breadcrumb-item active" aria-current="page"><%= material.breadcrumb_title %></li>
     <% else %>
-      <% if material.persisted? %>
+      <% if material.path? %>
         <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material %></li>
       <% end %>
       <li class="breadcrumb-item active" aria-current="page">
