@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/freshly/material.git
-  revision: 0a39842152126a967fde4eb4476802e90ae99f99
+  revision: 845ffaa7025c3710bebc745565c6884146f34069
   ref: use_conjunction_junction
   specs:
     material (0.2.21)
