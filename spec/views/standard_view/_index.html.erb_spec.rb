@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe "standard_view/_index.html.erb", type: :view do
   helper(StandardView::ApplicationHelper)
   helper(StandardView::FormattingHelper)
+  helper(FakeLawHelper)
 
   subject(:render_partial) { render partial: "standard_view/index", locals: { facet: facet } }
 

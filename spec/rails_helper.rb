@@ -29,6 +29,8 @@ require "support/test_classes/order_material"
 require "support/test_classes/test_facet"
 require "support/test_classes/test"
 
+require "support/helpers/fake_law_helper"
+
 require "support/shared_context/with_example_materials"
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
