@@ -11,7 +11,7 @@
       </li>
       <li class="breadcrumb-item"><%= link_to parent.breadcrumb_title, parent %></li>
 
-      <% unless current_page?(controller: parent.route_key, action: material.route_key) %>
+      <% unless on_page?(controller: parent.route_key, action: material.route_key) %>
         <li class="breadcrumb-item"><%= link_to title_for_model(material), [ material.route_key, parent ] %></li>
       <% end %>
     <% else %>
@@ -24,10 +24,10 @@
       </li>
     <% end %>
 
-    <% if current_page?(controller: material.route_key, action: :show) %>
+    <% if on_page?(controller: material.route_key, action: :show) %>
       <li class="breadcrumb-item active" aria-current="page"><%= material.breadcrumb_title %></li>
     <% else %>
-      <% if current_page?(controller: material.route_key) %>
+      <% if on_page?(controller: material.route_key) %>
         <li class="breadcrumb-item"><%= link_to material.breadcrumb_title, material %></li>
       <% end %>
       <li class="breadcrumb-item active" aria-current="page">
