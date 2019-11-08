@@ -42,16 +42,16 @@ RSpec.describe StandardView::ApplicationHelper, type: :helper do
 
     let(:options) { double }
 
-    before { allow(helper).to receive(:current_page?).with(options).and_return(current_page?) }
+    before { allow(helper).to receive(:on_page?).with(options).and_return(on_page?) }
 
-    context "when current_page?" do
-      let(:current_page?) { true }
+    context "when on_page?" do
+      let(:on_page?) { true }
 
       it { is_expected.to eq "active" }
     end
 
-    context "when NOT current_page?" do
-      let(:current_page?) { false }
+    context "when NOT on_page?" do
+      let(:on_page?) { false }
 
       it { is_expected.to be_nil }
     end

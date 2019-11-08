@@ -36,11 +36,9 @@
     <header>
       <%= render "standard_view/breadcrumbs", material: list if list.parent? %>
 
-      <%# if action_name == "index" %>
-        <%# if controller.action_methods.include?("new") && (!controller.respond_to?(:new?) || controller.new?) %>
-          <%#= link_to t("add_new"), { action: :new }, class: "btn btn-primary btn-lg float-right" %>
-        <%# end %>
-      <%# end %>
+      <% if on_page?(action: :index) %>
+        <%= link_to t("common.new"), { action: :new }, class: "btn btn-primary btn-lg float-right" if list_law.new? %>
+      <% end %>
 
       <%= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>
 
