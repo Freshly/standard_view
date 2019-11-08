@@ -23,6 +23,7 @@
 <% cache facet do %>
   <%# Within the cache block, mount the facet for rendering %>
   <% list.mount_facet(facet) %>
+  <% list_law = law(list.item_class) %>
 
   <% if list.parent? %>
     <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>

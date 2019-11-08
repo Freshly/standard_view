@@ -13,3 +13,7 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+gem "spicerack", git: "https://github.com/freshly/spicerack.git", ref: "conjunction/integration_tests"
+gem "law", git: "https://github.com/freshly/law.git", ref: "use_conjunction_junction"
+gem "material", git: "https://github.com/freshly/material.git", ref: "use_conjunction_junction"
