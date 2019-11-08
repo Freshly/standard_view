@@ -7,7 +7,13 @@ module StandardView
     end
 
     def active_for(options = {})
-      "active" if current_page?(options)
+      "active" if on_page?(options)
+    end
+
+    def on_page?(check_parameters: false, **options)
+      current_page?(options, check_parameters: check_parameters)
+    rescue ActionController::UrlGenerationError
+      false
     end
 
     def icon_for(reference, spin: false)
