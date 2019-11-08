@@ -37,7 +37,7 @@
     <header>
       <%= render "standard_view/breadcrumbs", material: list if list.parent? %>
 
-      <% if current_page?(action: :index) %>
+      <% if on_page?(action: :index) %>
         <%= link_to t("common.new"), { action: :new }, class: "btn btn-primary btn-lg float-right" if list_law.new? %>
       <% end %>
 
