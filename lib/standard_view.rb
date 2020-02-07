@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 require "standard_view/engine"
 
-module StandardView
-  # Your code goes here...
-end
+require "material"
+require "will_paginate"
+require "will_paginate/active_record"
+
+module StandardView; end

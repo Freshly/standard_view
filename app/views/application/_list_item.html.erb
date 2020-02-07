@@ -1,0 +1,11 @@
+<% render_default_partial = true %>
+<% source_partial_path = list_item.source.try(:to_partial_path) %>
+<% if source_partial_path.present? %>
+  <% prefix, path = source_partial_path.split("/") %>
+  <% if lookup_context.template_exists?(path, prefix, true) %>
+    <% render_default_partial = false %>
+    <%= render partial: source_partial_path, locals: { path.to_sym => list_item } %>
+  <% end %>
+<% end %>
+
+<%= render "standard_view/list_item", material: list_item if render_default_partial %>

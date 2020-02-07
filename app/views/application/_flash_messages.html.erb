@@ -1,0 +1,7 @@
+<% if flash.any? %>
+  <section id="flash-messages" class="container">
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: "alert #{alert_class_for_flash(type)}" %>
+    <% end %>
+  </section>
+<% end %>

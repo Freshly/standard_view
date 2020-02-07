@@ -1,0 +1,8 @@
+<% if list.any? %>
+  <nav class="list-group mb-3"><%= render list, cache: true %></nav>
+  <%= will_paginate list, renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer %>
+<% elsif local_assigns[:is_filtered] %>
+  <div class="alert alert-danger"><%= t(".filtered_out") %></div>
+<% else %>
+  <div class="alert alert-warning"><%= t(".empty") %></div>
+<% end %>

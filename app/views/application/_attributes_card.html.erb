@@ -1,0 +1,32 @@
+<% cache material do %>
+  <div class="card">
+    <div class="card-header">
+      <%# if content_for?(:attributes_action) %>
+        <%#= content_for(:attributes_action) %>
+      <%# else %>
+        <%# if controller.action_methods.include?("edit") && (!record.respond_to?(:editable?) || record.editable?) %>
+          <%#= link_to t("edit"), { action: :edit }, class: "btn btn-primary btn-sm float-right" %>
+        <%# elsif controller.action_methods.include? "destroy" %>
+          <%# if (!record.respond_to?(:destroyable?) || record.destroyable?) %>
+            <%#= link_to t("destroy"), record, class: "btn btn-danger btn-sm float-right", method: :delete, data: { confirm: t("confirm_destroy") } %>
+          <%# end %>
+        <%# end %>
+        <%#= content_for(:extra_attributes_action) if content_for?(:extra_attributes_action) %>
+      <%# end %>
+
+      <h4 class="mb-0"><%= t(".title") %></h4>
+    </div>
+    <div class="card-body p-0">
+      <table class="table m-0">
+        <tbody>
+        <% material.sorted_attribute_names.each do |attribute_name| %>
+          <tr>
+            <th><%= material.human_attribute_name(attribute_name) %></th>
+            <td><%= material.human_attribute_value(attribute_name) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

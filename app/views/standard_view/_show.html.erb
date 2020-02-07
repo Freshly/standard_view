@@ -1,0 +1,48 @@
+<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
+<% if local_assigns[:material].nil? %>
+  <% record = "#{controller_name.singularize.camelize}".constantize.find(params[:id]) if local_assigns[:record].nil? %>
+  <% material = Material::Base.for(record) %>
+<% end %>
+
+<%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
+<% content_for(:title) { material.title } %>
+
+<% cache material do %>
+  <% if lookup_context.template_exists?("navigation_tabs", controller_name, true) %>
+    <% content_for(:navigation_tabs) { render "navigation_tabs", material: material } %>
+  <% elsif lookup_context.template_exists?("navigation_aside", controller_name, true) %>
+    <% content_for(:navigation_aside) { render "navigation_aside", material: material } %>
+  <% end %>
+
+  <%= content_tag :main, id: "#{material.parameterized_title}-show", class: "container" do %>
+    <header>
+      <%= render "standard_view/breadcrumbs", material: material %>
+
+      <h5 class="text-muted"><%= heading_for_model material %></h5>
+
+      <% content_for(:header_title) { material.header_title } unless content_for?(:header_title) %>
+      <h1 class="mb-3"><%= content_for(:header_title) %></h1>
+
+      <%= content_for(:header_content) if content_for?(:header_content) %>
+
+      <%= render "standard_view/navigation_tabs" if content_for?(:navigation_tabs) %>
+    </header>
+
+    <%= content_tag(:hr) unless content_for?(:navigation_tabs) %>
+
+    <% unless content_for?(:page_content) %>
+      <% content_for(:page_content) do %>
+        <div class="row">
+          <% if lookup_context.template_exists?("content", controller_name, true) %>
+            <div class="col-xl-7 mb-3"><%= render "content", material: material %></div>
+            <div class="col-xl-5"><%= render "attributes_card", material: material %></div>
+          <% else %>
+            <div class="col-12"><%= render "attributes_card", material: material %></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= render "standard_view/page_content" %>
+  <% end %>
+<% end %>

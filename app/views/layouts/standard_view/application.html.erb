@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Standard view</title>
+  <title>
+    <%= "#{content_for(:title)} #{t("application.separator")} " if content_for?(:title) %><%= t("application.title") %>
+  </title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag    "standard_view/application", media: "all" %>
-  <%= javascript_include_tag "standard_view/application" %>
+  <%= render "stylesheets" %>
+  <%= render "javascripts" %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render "masthead" %>
+  <%= render "flash_messages" %>
+  <%= yield %>
 </body>
 </html>
