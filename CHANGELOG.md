@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+*Release Date*: 07/10/2020
+
+- Application Javascripts
+
 ## 0.1.3
 
 *Release Date*: 07/02/2020
