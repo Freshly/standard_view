@@ -15,8 +15,8 @@
     <div class="card-footer">
       <div class="row">
         <div class="col-6">
-          <% if model.persisted? && controller.action_methods.include?("destroy") %>
-            <% if !model.respond_to?(:destroyable?) || model.destroyable? %>
+          <% if material.persisted? && controller.action_methods.include?("destroy") %>
+            <% if !material.respond_to?(:destroyable?) || material.destroyable? %>
               <%= link_to t("common.destroy"), model, class: 'btn btn-danger', method: :delete, data: { confirm: t("common.confirm_destroy") } %>
             <% end %>
           <% end %>
