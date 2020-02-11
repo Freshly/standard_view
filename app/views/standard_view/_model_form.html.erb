@@ -1,0 +1,30 @@
+<%= simple_form_for [ material.parent, material ], wrapper: :horizontal_form do |form| %>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="mb-0"><%= t(".#{action_name}.title", title: material.title) %></h4>
+    </div>
+    <div class="card-body">
+      <% if lookup_context.template_exists?("form_fields", controller_name, true) %>
+        <%= render "form_fields", form: form %>
+      <% end %>
+
+      <% if lookup_context.template_exists?("#{action_name}_form_fields", controller_name, true) %>
+        <%= render "#{action_name}_form_fields", form: form %>
+      <% end %>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-6">
+          <% if material.persisted? && controller.action_methods.include?("destroy") %>
+            <% if !material.respond_to?(:destroyable?) || material.destroyable? %>
+              <%= link_to t("common.destroy"), model, class: 'btn btn-danger', method: :delete, data: { confirm: t("common.confirm_destroy") } %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-6 text-right">
+          <%= form.button :submit, class: "btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
