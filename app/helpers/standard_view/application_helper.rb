@@ -44,5 +44,13 @@ module StandardView
     def icon_tag(name = nil, style = nil, spin: false)
       content_tag(:i, "", class: "fa#{style || "s"} fa-#{name || "question"} #{"fa-spin" if spin}")
     end
+
+    def link_to_destroy_with_confirmation_for_record(record, extra_classes: "")
+      link_to t("common.destroy"),
+              record,
+              class: "btn btn-danger #{extra_classes}",
+              method: :delete,
+              data: { confirm: t("common.confirm_destroy") }
+    end
   end
 end

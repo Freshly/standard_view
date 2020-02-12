@@ -249,4 +249,8 @@ RSpec.describe StandardView::ApplicationHelper, type: :helper do
       it { is_expected.to eq "<i class=\"fa#{style} fa-#{name} fa-spin\"></i>" }
     end
   end
+
+  describe "#destroy_with_confirm_link_for_record" do
+    it "needs specs"
+  end
 end
