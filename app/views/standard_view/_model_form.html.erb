@@ -1,15 +1,15 @@
 <%= simple_form_for [ material.parent, material ], wrapper: :horizontal_form do |form| %>
   <div class="card">
     <div class="card-header">
-      <h4 class="mb-0"><%= t(".#{action_name}.title", title: material.title) %></h4>
+      <h4 class="mb-0"><%= t(".#{actionable_name}.title", title: material.title) %></h4>
     </div>
     <div class="card-body">
       <% if lookup_context.template_exists?("form_fields", controller_name, true) %>
         <%= render "form_fields", form: form %>
       <% end %>
 
-      <% if lookup_context.template_exists?("#{action_name}_form_fields", controller_name, true) %>
-        <%= render "#{action_name}_form_fields", form: form %>
+      <% if lookup_context.template_exists?("#{actionable_name}_form_fields", controller_name, true) %>
+        <%= render "#{actionable_name}_form_fields", form: form %>
       <% end %>
     </div>
     <div class="card-footer">
