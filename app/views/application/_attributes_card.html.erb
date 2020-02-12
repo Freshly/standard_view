@@ -3,9 +3,9 @@
 
   <% unless content_for?(:attributes_action) %>
     <% content_for(:attributes_action) do %>
-      <% if controller.action_methods.include?("edit") && material_law.edit? %>
+      <% if material_law.edit? %>
         <%= link_to t("common.edit"), { action: :edit }, class: "btn btn-primary btn-sm float-right" %>
-      <% elsif controller.action_methods.include?("destroy") && material_law.destroy? %>
+      <% elsif material_law.destroy? %>
         <%= link_to_destroy_with_confirmation_for_record(material, extra_classes: "btn-sm float-right") %>
       <% end %>
 
