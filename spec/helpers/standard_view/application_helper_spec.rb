@@ -38,9 +38,9 @@ RSpec.describe StandardView::ApplicationHelper, type: :helper do
   end
 
   describe "#active_for" do
-    subject { helper.active_for(options) }
+    subject { helper.active_for(**options) }
 
-    let(:options) { double }
+    let(:options) { {} }
 
     before { allow(helper).to receive(:on_page?).with(options).and_return(on_page?) }
 
