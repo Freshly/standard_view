@@ -1,0 +1,15 @@
+<%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
+<% if local_assigns[:material].nil? %>
+  <% record = "#{controller_name.singularize.camelize}".constantize.new if local_assigns[:record].nil? %>
+  <% material = Material::Base.for(record) %>
+<% end %>
+
+<%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
+<% content_for(:title) { material.title } %>
+<%= content_tag :main, id: "#{material.parameterized_title}-edit", class: "container" do %>
+  <header>
+    <%= render "standard_view/breadcrumbs", material: material %>
+  </header>
+
+  <%= render "standard_view/model_form", material: material %>
+<% end %>
