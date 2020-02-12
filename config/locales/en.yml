@@ -5,6 +5,10 @@ en:
     overview: Overview
     destroy: Destroy
     confirm_destroy: Are you sure you want to destroy this? This cannot be undone!
+    record_created: "%{model_name} created successfully."
+    record_updated: "%{model_name} updated successfully."
+    record_destroyed: "%{model_name} destroyed successfully."
+    error_destroying_record: "%{model_name} could not be destroyed!"
   application:
     title: Example Title
     separator: "|"
