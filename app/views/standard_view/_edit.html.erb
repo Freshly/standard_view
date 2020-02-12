@@ -1,6 +1,6 @@
 <%# For the good-spirited and impossibly lazy developer, we attempt to jump-start with no code, assuming conventions. %>
 <% if local_assigns[:material].nil? %>
-  <% record = "#{controller_name.singularize.camelize}".constantize.new if local_assigns[:record].nil? %>
+  <% record = "#{controller_name.singularize.camelize}".constantize.find(params[:id]) if local_assigns[:record].nil? %>
   <% material = Material::Base.for(record) %>
 <% end %>
 
