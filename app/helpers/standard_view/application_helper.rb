@@ -6,7 +6,14 @@ module StandardView
       ActiveSupport::StringInquirer.new action_name
     end
 
-    def active_for(options = {})
+    def actionable_name
+      return "new" if action_name == "create"
+      return "edit" if action_name == "update"
+
+      action_name
+    end
+
+    def active_for(**options)
       "active" if on_page?(options)
     end
 
@@ -18,17 +25,16 @@ module StandardView
 
     def icon_for(reference, spin: false)
       reference = reference.icon if reference.respond_to?(:icon)
-      definition = if reference.nil?
-        {}
-      elsif reference.respond_to?(:to_h)
-        reference.to_h
-      else
-        I18n.t("icons.#{reference}", default: nil) || reference
-      end
-
-      definition = { name: definition } if definition.present? && !definition.respond_to?(:fetch)
-
+      definition = icon_definition_for_reference(reference)
       icon_tag(definition[:name], definition[:style], spin: spin)
+    end
+
+    def icon_definition_for_reference(reference)
+      definition = reference.to_h if reference.respond_to?(:to_h)
+      definition ||= I18n.t("icons.#{reference}", default: nil) || reference if reference.present?
+      definition ||= {}
+      definition = { name: definition } if definition.present? && !definition.respond_to?(:fetch)
+      definition
     end
 
     def current_page
@@ -37,6 +43,14 @@ module StandardView
 
     def icon_tag(name = nil, style = nil, spin: false)
       content_tag(:i, "", class: "fa#{style || "s"} fa-#{name || "question"} #{"fa-spin" if spin}")
+    end
+
+    def link_to_destroy_with_confirmation_for_record(record, extra_classes: "")
+      link_to t("common.destroy"),
+              record,
+              class: "btn btn-danger #{extra_classes}",
+              method: :delete,
+              data: { confirm: t("common.confirm_destroy") }
     end
   end
 end

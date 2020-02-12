@@ -1,18 +1,21 @@
 <% cache material do %>
+  <% material_law = law(material) %>
+
+  <% unless content_for?(:attributes_action) %>
+    <% content_for(:attributes_action) do %>
+      <% if material_law.edit? %>
+        <%= link_to t("common.edit"), { action: :edit }, class: "btn btn-primary btn-sm float-right" %>
+      <% elsif material_law.destroy? %>
+        <%= link_to_destroy_with_confirmation_for_record(material, extra_classes: "btn-sm float-right") %>
+      <% end %>
+
+      <%= content_for(:extra_attributes_action) if content_for?(:extra_attributes_action) %>
+    <% end %>
+  <% end %>
+
   <div class="card">
     <div class="card-header">
-      <%# if content_for?(:attributes_action) %>
-        <%#= content_for(:attributes_action) %>
-      <%# else %>
-        <%# if controller.action_methods.include?("edit") && (!record.respond_to?(:editable?) || record.editable?) %>
-          <%#= link_to t("edit"), { action: :edit }, class: "btn btn-primary btn-sm float-right" %>
-        <%# elsif controller.action_methods.include? "destroy" %>
-          <%# if (!record.respond_to?(:destroyable?) || record.destroyable?) %>
-            <%#= link_to t("destroy"), record, class: "btn btn-danger btn-sm float-right", method: :delete, data: { confirm: t("confirm_destroy") } %>
-          <%# end %>
-        <%# end %>
-        <%#= content_for(:extra_attributes_action) if content_for?(:extra_attributes_action) %>
-      <%# end %>
+      <%= content_for(:attributes_action) %>
 
       <h4 class="mb-0"><%= t(".title") %></h4>
     </div>

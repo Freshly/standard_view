@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.1.5
+
+*Release Date*: 02/12/2020
+
+- Create Page / Edit Page / Model Form
+
 ## 0.1.4
 
-*Release Date*: 07/10/2020
+*Release Date*: 02/10/2020
 
 - Application Javascripts
 

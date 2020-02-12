@@ -37,8 +37,8 @@
     <header>
       <%= render "standard_view/breadcrumbs", material: list if list.parent? %>
 
-      <% if on_page?(action: :index) %>
-        <%= link_to t("common.new"), { action: :new }, class: "btn btn-primary btn-lg float-right" if list_law.new? %>
+      <% if on_page?(action: :index) &&  list_law.new? %>
+        <%= link_to t("common.new"), { action: :new }, class: "btn btn-primary btn-lg float-right" %>
       <% end %>
 
       <%= content_tag(:h5, class: "text-muted") { heading_for_model(list.parent) } if list.parent? %>

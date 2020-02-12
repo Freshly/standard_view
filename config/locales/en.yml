@@ -1,12 +1,28 @@
 en:
   common:
     new: New
+    edit: Edit
     overview: Overview
+    destroy: Destroy
+    confirm_destroy: Are you sure you want to destroy this? This cannot be undone!
+    record_created: "%{model_name} created successfully."
+    record_updated: "%{model_name} updated successfully."
+    record_destroyed: "%{model_name} destroyed successfully."
+    error_destroying_record: "%{model_name} could not be destroyed!"
   application:
     title: Example Title
     separator: "|"
     brand: Example Brand
     attributes_card:
       title: Attributes
+  standard_view:
+    paginated_collection:
+      empty: There are no records.
+      filtered_out: There are no records matching the current filter.
+    model_form:
+      new:
+        title: New %{title}
+      edit:
+        title: Edit %{title}
   icons:
     masthead_nav_menu: user
