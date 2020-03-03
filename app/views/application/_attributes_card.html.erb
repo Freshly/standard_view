@@ -25,7 +25,13 @@
         <% material.sorted_attribute_names.each do |attribute_name| %>
           <tr>
             <th><%= material.human_attribute_name(attribute_name) %></th>
-            <td><%= material.human_attribute_value(attribute_name) %></td>
+            <td>
+              <% if material.relationship_attributes.include?(attribute_name) %>
+                TODO...
+              <% else %>
+                <%= material.human_attribute_value(attribute_name) %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
