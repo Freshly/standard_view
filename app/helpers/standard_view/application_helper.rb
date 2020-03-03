@@ -57,7 +57,7 @@ module StandardView
       formatted_method_name = "#{attribute_name}_formatted"
       return material.public_send(formatted_method_name) if material.respond_to?(formatted_method_name)
 
-      return material.public_send(attribute_name) if material.primary_key == attribute_name
+      return material.public_send(attribute_name) if material.class.try(:primary_key) == attribute_name
       return link_to_related(material, attribute_name) if material.relationship_attributes.include?(attribute_name)
 
       i18n_method_name = "#{attribute_name}_i18n"
