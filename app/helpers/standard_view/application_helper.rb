@@ -54,6 +54,7 @@ module StandardView
     end
 
     def attribute_value_for(material, attribute_name)
+      return material.public_send(attribute_name) if material.primary_key == attribute_name
       return link_to_related(material, attribute_name) if material.relationship_attributes.include?(attribute_name)
 
       i18n_method_name = "#{attribute_name}_i18n"
