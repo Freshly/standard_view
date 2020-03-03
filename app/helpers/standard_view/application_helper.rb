@@ -54,6 +54,9 @@ module StandardView
     end
 
     def attribute_value_for(material, attribute_name)
+      formatted_method_name = "#{attribute_name}_formatted"
+      return material.public_send(formatted_method_name) if material.respond_to?(formatted_method_name)
+
       return material.public_send(attribute_name) if material.primary_key == attribute_name
       return link_to_related(material, attribute_name) if material.relationship_attributes.include?(attribute_name)
 
