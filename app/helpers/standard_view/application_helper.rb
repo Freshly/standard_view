@@ -52,5 +52,18 @@ module StandardView
               method: :delete,
               data: { confirm: t("common.confirm_destroy") }
     end
+
+    def attribute_value_for(material, attribute_name)
+      return link_to_related(material, attribute_name) if material.relationship_attributes.include?(attribute_name)
+
+      i18n_method_name = "#{attribute_name}_i18n"
+      return material.public_send(i18n_method_name) if material.respond_to?(i18n_method_name)
+
+      material.human_attribute_value(attribute_name)
+    end
+
+    def link_to_related(material, attribute_name)
+      "TODO: relation link for #{attribute_name}"
+    end
   end
 end
