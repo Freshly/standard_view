@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.1.7
+
+*Release Date*: 03/04/2020
+
+- Typo Fix
+
 ## 0.1.6
 
-*Release Date*: 03/03/2020
+*Release Date*: 03/04/2020
 
 - References / Primary Keys / Gem Updates
 
