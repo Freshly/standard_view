@@ -253,4 +253,12 @@ RSpec.describe StandardView::ApplicationHelper, type: :helper do
   describe "#destroy_with_confirm_link_for_record" do
     it "needs specs"
   end
+
+  describe "#attribute_value_for" do
+    it "needs specs"
+  end
+
+  describe "#link_to_related" do
+    it "needs specs"
+  end
 end
