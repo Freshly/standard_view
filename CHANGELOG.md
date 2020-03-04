@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6
+
+*Release Date*: 03/03/2020
+
+- References / Primary Keys / Gem Updates
+
 ## 0.1.5
 
 *Release Date*: 02/12/2020
