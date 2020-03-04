@@ -25,7 +25,7 @@
         <% material.sorted_attribute_names.each do |attribute_name| %>
           <tr>
             <th><%= material.human_attribute_name(attribute_name) %></th>
-            <td><%= material.human_attribute_value(attribute_name) %></td>
+            <td><%= attribute_value_for material, attribute_name %></td>
           </tr>
         <% end %>
         </tbody>

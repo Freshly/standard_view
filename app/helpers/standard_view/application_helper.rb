@@ -52,5 +52,27 @@ module StandardView
               method: :delete,
               data: { confirm: t("common.confirm_destroy") }
     end
+
+    def attribute_value_for(material, attribute_name)
+      formatted_method_name = "#{attribute_name}_formatted"
+      return material.public_send(formatted_method_name) if material.respond_to?(formatted_method_name)
+
+      return material.public_send(attribute_name) if material.class.try(:primary_key) == attribute_name
+      return link_to_related(material, attribute_name) if material.relationship_attributes.include?(attribute_name)
+
+      i18n_method_name = "#{attribute_name}_i18n"
+      return material.public_send(i18n_method_name) if material.respond_to?(i18n_method_name)
+
+      material.human_attribute_value(attribute_name)
+    end
+
+    def link_to_related(material, attribute_name)
+      related_object_method_name = attribute_name.chomp("_id")
+      related_object = material.public_send(related_object_method_name)
+      raise ArgumentError, "no related object for #{material.inspect}" unless related_object.present?
+
+      related_material = Material::Base.for(related_object)
+      link_to related_material.reference_title, related_material
+    end
   end
 end
