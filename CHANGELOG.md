@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.8
+
+*Release Date*: 04/10/2020
+
+- Updated Material Gem
+- Added Material to Model Generator
+
 ## 0.1.7
 
 *Release Date*: 03/04/2020

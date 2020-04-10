@@ -7,8 +7,8 @@ require "standard_view/version"
 Gem::Specification.new do |spec|
   spec.name        = "standard_view"
   spec.version     = StandardView::VERSION
-  spec.authors     = [ "Eric Garside" ]
-  spec.email       = %w[eric.garside@freshly.com]
+  spec.authors     = [ "Eric Garside", "Brandon Trumpold" ]
+  spec.email       = %w[eric.garside@freshly.com brandon.trumpold@gmail.com]
   spec.homepage    = "https://github.com/Freshly/standard_view"
   spec.summary     = "A highly functional and largely automated presentation layer."
   spec.description = "Use Bootstrap to present a nicely standardized view for your models."
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   spec.add_dependency "rails", ">= 5.2.3"
-  spec.add_dependency "material", ">= 0.3.5", "< 1.0"
+  spec.add_dependency "material", ">= 0.3.6", "< 1.0"
   spec.add_dependency "spicery", ">= 0.22.3.1", "< 1.0"
   spec.add_dependency "law", ">= 0.1.5", "< 1.0"
   spec.add_dependency "simple_form", ">= 4.1", "< 5.1"
