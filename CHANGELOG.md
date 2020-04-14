@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.9
+
+*Release Date*: 04/14/2020
+
+- Added Facet and Law to Model Generator
+
 ## 0.1.8
 
 *Release Date*: 04/10/2020
