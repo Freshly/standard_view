@@ -74,5 +74,13 @@ module StandardView
       related_material = Material::Base.for(related_object)
       link_to related_material.reference_title, related_material
     end
+
+    def record_from_parent_route
+      path_parent_name, path_parent_id = request.path.split("/#{controller_name}").first.split("/")[1,2]
+      parent_name = path_parent_name.singularize
+      parent_param_key = "#{parent_name}_id"
+      parent_id = params[parent_param_key]
+      parent_record = parent_name.camelize.constantize.find(parent_id) if parent_id.present?
+    end
   end
 end
