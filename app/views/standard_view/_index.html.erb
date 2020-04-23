@@ -16,7 +16,7 @@
   <% list = Material::List.for(facet.record_class) %>
   <% list.contextualize(facet_source) if is_nested %>
 <% end %>
-
+<% raise StandardError %>
 <%# Title must remain outside the cache block or it will not be assigned properly (since it affects the page layout) %>
 <% content_for(:title) { list.title } %>
 
