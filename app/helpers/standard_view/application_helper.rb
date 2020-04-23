@@ -80,7 +80,7 @@ module StandardView
       parent_name = path_parent_name.singularize
       parent_param_key = "#{parent_name}_id"
       parent_id = params[parent_param_key]
-      parent_record = parent_name.camelize.constantize.find(parent_id) if parent_id.present?
+      parent_name.camelize.constantize.find(parent_id) if parent_id.present?
     end
   end
 end
