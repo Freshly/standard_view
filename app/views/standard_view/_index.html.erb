@@ -1,9 +1,9 @@
 <%# For the good-spirited and impossibly lazy developer, we attempt to jump-start, assuming conventions. %>
 <% is_nested = local_assigns[:nested] %>
 
-<% facet_source = local_assigns[:facet_source] %>
+<% facet_source = local_assigns[:facet_source] || record_from_parent_route %>
 <% if is_nested && facet_source.nil? %>
-  <% facet_source = record_from_parent_route || controller_name.singularize.camelize.constantize.find(params[:id]) %>
+  <% facet_source = controller_name.singularize.camelize.constantize.find(params[:id]) %>
 <% end %>
 
 <% if local_assigns[:facet].nil? %>
