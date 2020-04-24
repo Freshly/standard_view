@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.10
+
+*Release Date*: 04/14/2020
+
+- Added Facet Polymorphic Route feature for nested controller routes
+
 ## 0.1.9
 
 *Release Date*: 04/14/2020
