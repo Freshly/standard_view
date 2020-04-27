@@ -26,7 +26,7 @@
           <tr>
             <th><%= material.human_attribute_name(attribute_name) %></th>
             <td>
-              <%= attribute_value = attribute_value_for material, attribute_name %>
+              <% attribute_value = attribute_value_for material, attribute_name %>
               <% if attribute_value.present? %>
                 <%= attribute_value %>
               <% else %>
