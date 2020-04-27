@@ -26,12 +26,12 @@
           <tr>
             <th><%= material.human_attribute_name(attribute_name) %></th>
             <td>
-              <%= attribute_value_for material, attribute_name %>
+              <%= attribute_value = attribute_value_for material, attribute_name %>
               <% if attribute_value.present? %>
                 <%= attribute_value %>
               <% else %>
-                <% if lookup_context.template_exists?("#{actionable_name}_form_fields", controller_name, true) %>
-                    <%= render "#{actionable_name}_form_fields", form: form %>
+                <% if lookup_context.template_exists?("#{attribute_name}_missing", controller_name, true) %>
+                    <%= render "#{attribute_name}_missing", form: form %>
                   <% else %>
                       <%= badge t("common.not_defined"), type: :danger, pill: true %>
                   <% end %>
