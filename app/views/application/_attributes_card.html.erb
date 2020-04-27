@@ -25,19 +25,7 @@
         <% material.sorted_attribute_names.each do |attribute_name| %>
           <tr>
             <th><%= material.human_attribute_name(attribute_name) %></th>
-            <td>
-              <% attribute_value = attribute_value_for material, attribute_name %>
-              <% if attribute_value.present? %>
-                <%= attribute_value %>
-              <% else %>
-              <%= missing_attr_partial_name = "#{attribute_name}_missing" %>
-                <% if lookup_context.template_exists?(missing_attr_partial_name, controller_name, true) %>
-                    <%= render missing_attr_partial_name, material: material %>
-                <% else %>
-                    <%= badge t("common.not_defined"), type: :danger, pill: true %>
-                <% end %>
-              <% end %>
-            </td>
+            <td><%= render "attribute_card_value", material: material, attribute_name: attribute_name %></td>
           </tr>
         <% end %>
         </tbody>
@@ -45,3 +33,9 @@
     </div>
   </div>
 <% end %>
+
+<% main_name = "#{attribute_name}_attribute" %>
+<% if view_context.partial?(main_name) %>
+  <%= render main_name
+<% else %>
+  <% attribute_value = ...
