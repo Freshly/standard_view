@@ -1,8 +1,15 @@
 # Changelog
 
+## 0.1.12
+
+*Release Date*: 04/27/2020
+
+- Fixing parent endpoint for nested controllers
+
+
 ## 0.1.11
 
-*Release Date*: 04/14/2020
+*Release Date*: 04/27/2020
 
 - Added compatibility for displaying cards for models with optional relationships
 
