@@ -69,7 +69,7 @@ module StandardView
     def link_to_related(material, attribute_name)
       related_object_method_name = attribute_name.chomp("_id")
       related_object = material.public_send(related_object_method_name)
-      raise ArgumentError, "no related object for #{material.inspect}" unless related_object.present?
+      return if related_object.blank?
 
       related_material = Material::Base.for(related_object)
       link_to related_material.reference_title, related_material

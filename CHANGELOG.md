@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.11
+
+*Release Date*: 04/14/2020
+
+- Added compatibility for displaying cards for models with optional relationships
+
 ## 0.1.10
 
 *Release Date*: 04/14/2020
