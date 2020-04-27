@@ -1,0 +1,16 @@
+<% attribute_partial_name = "#{attribute_name}_attribute" %>
+<% if lookup_context.template_exists?(attribute_partial_name, controller_name, true) %>
+  <%= render attribute_partial_name, material: material %>
+<% else %>
+  <% attribute_value = attribute_value_for material, attribute_name %>
+  <% if attribute_value.present? %>
+    <%= attribute_value %>
+  <% else %>
+    <% missing_attribute_partial_name = "#{attribute_name}_missing" %>
+    <% if lookup_context.template_exists?(missing_attribute_partial_name, controller_name, true) %>
+      <%= render missing_attribute_partial_name, material: material %>
+    <% else %>
+      <%= badge t("common.not_defined"), type: :danger, pill: true %>
+    <% end %>
+  <% end %>
+<% end %>

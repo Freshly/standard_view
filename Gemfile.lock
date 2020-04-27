@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    standard_view (0.1.10)
+    standard_view (0.1.11)
       law (>= 0.1.7, < 1.0)
       material (>= 0.3.6, < 1.0)
       rails (>= 5.2.3)
