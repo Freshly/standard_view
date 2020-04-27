@@ -31,8 +31,6 @@
                 <%= attribute_value %>
               <% else %>
               <%= missing_attr_partial_name = "#{attribute_name}_missing" %>
-              <% if view_context.exists?(missing_attr_partial_name) %>
-                <%= render missing_attr_partial_name %>
                 <% if lookup_context.template_exists?(missing_attr_partial_name, controller_name, true) %>
                     <%= render missing_attr_partial_name, material: material %>
                 <% else %>
