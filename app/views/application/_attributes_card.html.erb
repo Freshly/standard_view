@@ -31,10 +31,10 @@
                 <%= attribute_value %>
               <% else %>
                 <% if lookup_context.template_exists?("#{attribute_name}_missing", controller_name, true) %>
-                    <%= render "#{attribute_name}_missing", form: form %>
-                  <% else %>
-                      <%= badge t("common.not_defined"), type: :danger, pill: true %>
-                  <% end %>
+                    <%= render "#{attribute_name}_missing", material: material %>
+                <% else %>
+                    <%= badge t("common.not_defined"), type: :danger, pill: true %>
+                <% end %>
               <% end %>
             </td>
           </tr>
