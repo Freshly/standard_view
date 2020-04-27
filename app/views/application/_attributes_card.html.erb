@@ -30,8 +30,11 @@
               <% if attribute_value.present? %>
                 <%= attribute_value %>
               <% else %>
-                <% if lookup_context.template_exists?("#{attribute_name}_missing", controller_name, true) %>
-                    <%= render "#{attribute_name}_missing", material: material %>
+              <%= missing_attr_partial_name = "#{attribute_name}_missing" %>
+              <% if view_context.exists?(missing_attr_partial_name) %>
+                <%= render missing_attr_partial_name %>
+                <% if lookup_context.template_exists?(missing_attr_partial_name, controller_name, true) %>
+                    <%= render missing_attr_partial_name, material: material %>
                 <% else %>
                     <%= badge t("common.not_defined"), type: :danger, pill: true %>
                 <% end %>
