@@ -1,11 +1,16 @@
 # Changelog
 
+## 0.1.13
+
+*Release Date*: 04/28/2020
+
+- Updated Material version
+
 ## 0.1.12
 
 *Release Date*: 04/27/2020
 
 - Fixing parent endpoint for nested controllers
-
 
 ## 0.1.11
 
