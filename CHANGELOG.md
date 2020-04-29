@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.14
+
+*Release Date*: 04/29/2020
+
+- Added fix for nested form error when editing
+
 ## 0.1.13
 
 *Release Date*: 04/28/2020
