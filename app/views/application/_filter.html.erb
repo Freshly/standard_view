@@ -1,0 +1,20 @@
+<% has_default = facet.default_filter? %>
+<% without_filter = params[:filter].blank? %>
+<% is_all = has_default ? params[:all].present? : without_filter %>
+<ul class="nav nav-pills justify-content-end">
+  <li class="nav-item">
+    <span class="nav-link"><%= icon_for(:filter) %></span>
+  </li>
+  <li class="nav-item">
+    <% all_params = {}.tap { |h| h[:all] = true if has_default } %>
+    <%= link_to t("common.all"), params.permit(:page).merge(all_params), class: "nav-link #{"active" if is_all}" %>
+  </li>
+  <% list.filter_values.each do |value, label| %>
+    <% is_default = value == facet.default_filter.to_s %>
+    <% is_active = is_default ? (without_filter && !is_all) : params[:filter] == value %>
+    <% filter_params = {}.tap { |h| h[:filter] = value unless is_default } %>
+    <li class="nav-item">
+      <%= link_to label, params.permit(:page).merge(filter_params), class: "nav-link #{"active" if is_active}" %>
+    </li>
+  <% end %>
+</ul>
