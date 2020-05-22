@@ -1,5 +1,6 @@
 en:
   common:
+    all: All
     new: New
     edit: Edit
     overview: Overview
@@ -27,3 +28,4 @@ en:
         title: Edit %{title}
   icons:
     masthead_nav_menu: user
+    filter: filter

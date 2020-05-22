@@ -6,10 +6,10 @@
   <% facet_source = controller_name.singularize.camelize.constantize.find(params[:id]) %>
 <% end %>
 
-<% if local_assigns[:facet].nil? %>
+<% if local_assigns[:facet].present? %>
   <% facet_name = is_nested ? action_name : controller_name %>
   <% facet_class = local_assigns[:facet_class].presence || "#{facet_name.singularize.camelize}Facet".constantize %>
-  <% facet = facet_class.new(current_page: current_page, source: facet_source) %>
+  <% facet = facet_class.new(current_page: current_page, source: facet_source, filter_by: params[:filter]) %>
 <% end %>
 
 <% if local_assigns[:list].nil? %>
@@ -52,26 +52,15 @@
 
     <% unless content_for?(:page_content) %>
       <% content_for(:page_content) do %>
-        <%# if content_for?(:subnav_content) || uses_filter %>
-          <%#= content_for(:subnav_content) if content_for?(:subnav_content) %>
+        <% if content_for?(:subnav_content) || list.filter_field? %>
+          <%= content_for(:subnav_content) if content_for?(:subnav_content) %>
+          <%= render "filter", list: list, facet: facet if list.filter_field? %>
 
-          <%# if uses_filter %>
-            <%#= render "filter", field: filter_by, default: local_assigns[:filter_default], model: collection.model %>
-          <%# end %>
-<!--          <hr>-->
-        <%# end %>
+          <hr>
+        <% end %>
 
         <div class="row">
           <div class="col-12">
-            <%# filtered_collection = collection %>
-            <%# if uses_filter %>
-              <%# if params[:filter].present? %>
-                <%# filtered_collection = filtered_collection.public_send(params[:filter].to_sym) %>
-              <%# elsif has_filter_default && !params[:all].present? %>
-                <%# filtered_collection = filtered_collection.public_send(filter_default) %>
-              <%# end %>
-            <%# end %>
-
             <%= render "standard_view/paginated_collection", list: list, is_filtered: facet.filtered? %>
           </div>
         </div>
