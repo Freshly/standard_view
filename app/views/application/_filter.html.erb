@@ -9,8 +9,8 @@
     <% all_params = {}.tap { |h| h[:all] = true if has_default } %>
     <%= link_to t("common.all"), params.permit(:page).merge(all_params), class: "nav-link #{"active" if is_all}" %>
   </li>
-  <% model.public_send("#{field.to_s.pluralize}_i18n".to_sym).each do |value, label| %>
-    <% is_default = value == face.default_filter.to_s %>
+  <% list.filter_values.each do |value, label| %>
+    <% is_default = value == facet.default_filter.to_s %>
     <% is_active = is_default ? (without_filter && !is_all) : params[:filter] == value %>
     <% filter_params = {}.tap { |h| h[:filter] = value unless is_default } %>
     <li class="nav-item">
