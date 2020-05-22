@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.15
+
+*Release Date*: 05/21/2020
+
+- Added filtering support
+
 ## 0.1.14
 
 *Release Date*: 04/29/2020
