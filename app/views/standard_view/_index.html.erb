@@ -9,7 +9,8 @@
 <% if local_assigns[:facet].nil? %>
   <% facet_name = is_nested ? action_name : controller_name %>
   <% facet_class = local_assigns[:facet_class].presence || "#{facet_name.singularize.camelize}Facet".constantize %>
-  <% facet = facet_class.new(current_page: current_page, source: facet_source, filter_by: params[:filter]) %>
+  <% filter_arguments = { filter_by: params[:filter], all: params[:all] == "true" } %>
+  <% facet = facet_class.new(current_page: current_page, source: facet_source, **filter_arguments) %>
 <% end %>
 
 <% if local_assigns[:list].nil? %>
