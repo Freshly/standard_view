@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.16
+
+*Release Date*: 05/23/2020
+
+- Encoding fix
+
 ## 0.1.15
 
 *Release Date*: 05/21/2020
