@@ -38,7 +38,7 @@ module StandardView
     end
 
     def current_page
-      params[:page]
+      params[:page].try(:to_i)
     end
 
     def icon_tag(name = nil, style = nil, spin: false)
