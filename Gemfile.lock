@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    standard_view (0.1.15)
+    standard_view (0.1.16)
       law (>= 0.1.7, < 1.0)
       material (>= 0.3.9, < 1.0)
       rails (>= 5.2.3)
@@ -233,7 +233,7 @@ GEM
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.1)
-    websocket-driver (0.7.1)
+    websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
     will_paginate (3.1.8)
