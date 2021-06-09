@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.17
+
+*Release Date*: 06/09/2021
+
+- Version updates
+
 ## 0.1.16
 
 *Release Date*: 05/23/2020
