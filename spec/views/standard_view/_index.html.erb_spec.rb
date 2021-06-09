@@ -40,6 +40,9 @@ RSpec.describe "standard_view/_index.html.erb", type: :view do
 
     view.instance_variable_get("@view_flow").set(:page_content, page_content) unless page_content.nil?
 
+    allow(view).to receive(:action_name).and_return("index")
+    allow(view).to receive(:controller_name).and_return("Test")
+
     stub_template "standard_view/_breadcrumbs.html.erb" => "_breadcrumb_<%= material.object_id %><br/>"
     stub_template "standard_view/_paginated_collection.html.erb" => "_page_<%= list.object_id %><%= is_filtered %><br/>"
     stub_template "standard_view/_page_content.html.erb" => "_page_content"
